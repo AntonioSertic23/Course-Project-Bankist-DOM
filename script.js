@@ -1,5 +1,6 @@
 'use strict';
 
+// Constants
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -11,31 +12,35 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
-// Modal window
-
+// Function to open the modal
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
 
+// Function to close the modal
 const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
 
+// Adding event listeners to open modal on each button
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
+// Event listener to close modal on close button click
 btnCloseModal.addEventListener('click', closeModal);
+// Event listener to close modal on overlay click
 overlay.addEventListener('click', closeModal);
 
+// Event listener to close modal on Escape key press
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
 
-// Button scrolling
+// Scroll to section on button click
 btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
